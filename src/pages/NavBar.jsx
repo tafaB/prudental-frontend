@@ -1,6 +1,6 @@
 function NavBar() {
     return (
-        <div className="navbar bg-base-100 shadow-sm px:10 lg:px-20 fixed top-0 w-full z-50">
+        <div className="navbar bg-base-100 shadow-sm px-10 lg:px-20 fixed top-0 w-full z-50">
             <div className="navbar-start">
                 <h1 className="text-2xl font-bold text-primary">Prudental</h1>
             </div>
