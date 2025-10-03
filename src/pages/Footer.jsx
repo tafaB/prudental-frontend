@@ -1,3 +1,6 @@
+import locationPin from "../assets/location-pin.svg"
+import phone from "../assets/phone.svg"
+import mail from "../assets/mail.svg"
 function Footer() {
     return (
         <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
@@ -73,9 +76,23 @@ function Footer() {
             </nav>
             <nav>
                 <h6 className="footer-title">Contact Info</h6>
-                <a className="link link-hover">123 Dental Street<br />Health City, HC 12345</a>
-                <a className="link link-hover">(555) 123-4567</a>
-                <a className="link link-hover">info@dentalcare.com</a>
+
+                <a className="link link-hover flex items-center gap-3">
+                    <img className="w-6 h-6 text-white" src={locationPin} alt="Location" />
+                    <span>
+                        123 Dental Street<br />Health City, HC 12345
+                    </span>
+                </a>
+
+                <a className="link link-hover flex items-center gap-3 py-4">
+                    <img className="w-6 h-6 text-white" src={phone} alt="Phone" />
+                    <span>(555) 123-4567</span>
+                </a>
+
+                <a className="link link-hover flex items-center gap-3">
+                    <img className="w-6 h-6 text-white" src={mail} alt="Email" />
+                    <span>info@dentalcare.com</span>
+                </a>
             </nav>
         </footer>
     )

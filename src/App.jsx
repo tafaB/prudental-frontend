@@ -1,15 +1,15 @@
-import Footer from "./components/Footer"
-import NavBar from "./components/NavBar"
-import Welcome from "./components/Welcome"
-import Body from "./pages/Body"
+import Footer from "./pages/Footer"
+import NavBar from "./pages/NavBar"
+import Welcome from "./pages/Welcome"
+import AboutSection from "./pages/AboutSection"
 
 function App() {
   return (
     <div className="App">
-      <NavBar/>
-      <Welcome/>
-      <Body/>
-      <Footer/>
+      <NavBar />
+      <Welcome />
+      <AboutSection />
+      <Footer />
     </div>
   )
 }
