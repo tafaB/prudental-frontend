@@ -65,16 +65,16 @@ Additional Message: ${formData.message || 'None'}
   };
 
     return (
-        <div id="appointment" className="bg-base-200 p-5 sm:p-20 lg:px-20 w-full">
+        <div id="appointment" className="bg-base-200 p-5 sm:p-20 lg:px-10 w-full">
             <div className="text-center space-y-4 mb-16">
                 <h2 className="text-4xl font-bold text-gray-900">Book Your Appointment</h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                     Ready to take the next step towards better oral health? Schedule your appointment with us today.
                 </p>
             </div>
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
-                <div className="w-full" data-aos="fade-right">
-                    <div className="card card-xl bg-base-100 w-full shadow-sm shadow-2xl mb-10">
+            <div className="grid lg:grid-cols-2 gap-10 items-start lg:px-20">
+                <div className="grid gap-10 w-full h-full" data-aos="fade-right">
+                    <div className="card card-xl bg-base-100 w-full min-w-0 h-full shrink-0 shadow-2xl">
                         <div className="card-body">
                             <h2 className="card-title text-2xl">Contact Information</h2>
                             <h3 className="text-xl text-gray-600 pb-5">Get in touch with us through any of these channels</h3>
@@ -99,12 +99,12 @@ Additional Message: ${formData.message || 'None'}
                                     </div>
                                     <div>
                                         <div className="font-semibold">Email</div>
-                                        <div className="text-gray-600">suadaastafasani@gmail.com</div>
+                                        <div className="text-gray-600 text-xs sm:text-lg">suadaastafasani@gmail.com</div>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center space-x-4">
-                                    <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
                                         <svg className="w-6 h-6 text-base-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -112,7 +112,7 @@ Additional Message: ${formData.message || 'None'}
                                     </div>
                                     <div>
                                         <div className="font-semibold">Address</div>
-                                        <div className="text-gray-600">Rruga Albanopoli, Tirana, Albania</div>
+                                        <div className="text-gray-600 text-xs sm:text-lg">Rruga Albanopoli, Tirana, Albania</div>
                                     </div>
                                 </div>
                             </div>
@@ -121,15 +121,15 @@ Additional Message: ${formData.message || 'None'}
                     <div className="card card-xl bg-primary text-primary-content w-full shadow-2xl">
                         <div className="card-body">
                             <h2 className="card-title text-2xl">Office Hours</h2>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between text-sm sm:text-lg">
                                 <span>Monday - Friday</span>
                                 <span>8:00 AM - 6:00 PM</span>
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between text-sm sm:text-lg">
                                 <span>Saturday</span>
                                 <span>9:00 AM - 3:00 PM</span>
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between text-sm sm:text-lg">
                                 <span>Sunday</span>
                                 <span>Closed</span>
                             </div>
