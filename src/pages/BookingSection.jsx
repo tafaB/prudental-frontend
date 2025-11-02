@@ -1,6 +1,71 @@
+import { useState } from 'react';
+import "react-day-picker/style.css";
 function BookingSection() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        date: '',
+        time: '',
+        service: '',
+        message: ''
+    });
+
+    const services = [
+        "Therapy",
+        "Surgery",
+        "Orthodontics",
+        "Implantology",
+        "Clear Aligners",
+        "Emergency Care"
+    ];
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleServiceSelect = (service) => {
+        setFormData(prev => ({
+            ...prev,
+            service
+        }));
+    };
+
+      const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    // Validation
+    if (!formData.firstName) return alert('Please fill your First Name');
+    if (!formData.lastName) return alert('Please fill your Last Name');
+    if (!formData.date) return alert("Please select a date.");
+    if (!formData.time) return alert("Please select a time.");
+    if (!formData.service) return alert("Please enter the type of service you need");
+
+    // Format message for WhatsApp
+    const message = `
+New Appointment Request:
+
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email || 'N/A'}
+Phone: ${formData.phone || 'N/A'}
+Date: ${formData.date}
+Time: ${formData.time}
+Service: ${formData.service}
+Additional Message: ${formData.message || 'None'}
+`.trim();
+
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = '355699334380';
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
     return (
-        <div className="bg-base-200 p-20">
+        <div id="appointment" className="bg-base-200 p-5 sm:p-20 lg:px-20 w-full">
             <div className="text-center space-y-4 mb-16">
                 <h2 className="text-4xl font-bold text-gray-900">Book Your Appointment</h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -8,7 +73,7 @@ function BookingSection() {
                 </p>
             </div>
             <div className="grid lg:grid-cols-2 gap-16 items-start">
-                <div className="w-full">
+                <div className="w-full" data-aos="fade-right">
                     <div className="card card-xl bg-base-100 w-full shadow-sm shadow-2xl mb-10">
                         <div className="card-body">
                             <h2 className="card-title text-2xl">Contact Information</h2>
@@ -22,7 +87,7 @@ function BookingSection() {
                                     </div>
                                     <div>
                                         <div className="font-semibold">Phone</div>
-                                        <div className="text-gray-600">(555) 123-4567</div>
+                                        <div className="text-gray-600">+355 69 933 4380</div>
                                     </div>
                                 </div>
 
@@ -34,7 +99,7 @@ function BookingSection() {
                                     </div>
                                     <div>
                                         <div className="font-semibold">Email</div>
-                                        <div className="text-gray-600">info@dentalcare.com</div>
+                                        <div className="text-gray-600">suadaastafasani@gmail.com</div>
                                     </div>
                                 </div>
 
@@ -47,7 +112,7 @@ function BookingSection() {
                                     </div>
                                     <div>
                                         <div className="font-semibold">Address</div>
-                                        <div className="text-gray-600">123 Dental Street<br />Health City, HC 12345</div>
+                                        <div className="text-gray-600">Rruga Albanopoli, Tirana, Albania</div>
                                     </div>
                                 </div>
                             </div>
@@ -77,10 +142,11 @@ function BookingSection() {
                         </div>
                     </div>
                 </div>
-                <div className="card bg-base-100 w-full h-full shrink-0 shadow-2xl">
+                <form onSubmit={handleSubmit}  className="card bg-base-100 w-full h-full shrink-0 shadow-2xl"
+                    data-aos="fade-left">
                     <div className="card-body w-full h-full">
                         <h2 className="card-title text-2xl">Schedule Your Visit</h2>
-                        <h3 className="text-xl text-gray-600 pb-5">Fill out the form below and we'll contact you to confirm your appointment</h3>
+                        <h3 className="text-xl text-gray-600 pb-5">Fill out the form below and we will contact you to confirm your appointment</h3>
                         <div className="w-full h-full flex flex-col justify-evenly">
                             <fieldset className="fieldset">
                                 <div className="grid lg:grid-cols-2 lg:grid-rows-3 gap-5 h-full">
@@ -99,12 +165,15 @@ function BookingSection() {
                                                 </g>
                                             </svg>
                                             <input
+                                                name="firstName"
                                                 type="text"
                                                 required
-                                                placeholder="First Name"
+                                                placeholder="First Name *"
                                                 pattern="^[A-Za-z]{3,30}$"
                                                 minlength="3"
                                                 maxlength="30"
+                                                value={formData.firstName}
+                                                onChange={handleInputChange}
                                             />
                                         </label>
                                         <p className="validator-hint">
@@ -126,12 +195,15 @@ function BookingSection() {
                                                 </g>
                                             </svg>
                                             <input
+                                                name="lastName"
                                                 type="text"
                                                 required
-                                                placeholder="Last Name"
+                                                placeholder="Last Name *"
                                                 pattern="^[A-Za-z]{3,30}$"
                                                 minlength="3"
                                                 maxlength="30"
+                                                value={formData.lastName}
+                                                onChange={handleInputChange}
                                             />
                                         </label>
                                         <p className="validator-hint">
@@ -152,7 +224,10 @@ function BookingSection() {
                                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                                                 </g>
                                             </svg>
-                                            <input type="email" placeholder="mail@site.com" required />
+                                            <input name="email" type="email" placeholder="mail@site.com"
+                                                value={formData.email}
+                                                onChange={handleInputChange}
+                                            />
                                         </label>
                                         <div className="validator-hint hidden">Enter valid email address</div>
                                     </div>
@@ -173,42 +248,134 @@ function BookingSection() {
                                                 </g>
                                             </svg>
                                             <input
+                                                name="phone"
                                                 type="tel"
                                                 className="tabular-nums"
-                                                required
                                                 placeholder="Phone"
-                                                pattern="[0-9]*"
-                                                minlength="10"
-                                                maxlength="10"
-                                                title="Must be 10 digits"
+                                                pattern="\+[0-9]*"
+                                                title="Must contain prefix and digits"
+                                                value={formData.phone}
+                                                onChange={handleInputChange}
                                             />
                                         </label>
                                         <p className="validator-hint">Must be 10 digits</p>
                                     </div>
-                                    <input type="date" className="input input-lg w-full" />
-                                    <input type="time" className="input input-lg w-full" />
+
+                                    <div title="date">
+                                        <label className="input input-lg validator w-full">
+                                            <svg
+                                                className="h-[1em] opacity-50"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            >
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                                <line x1="16" y1="2" x2="16" y2="6" />
+                                                <line x1="8" y1="2" x2="8" y2="6" />
+                                                <line x1="3" y1="10" x2="21" y2="10" />
+                                            </svg>
+                                            <input
+                                                name="date"
+                                                type="date"
+                                                required
+                                                className="w-full"
+                                                placeholder="Date *"
+                                                value={formData.date}
+                                                onChange={handleInputChange}
+                                            />
+                                        </label>
+                                    </div>
+
+                                    <div title="time">
+                                        <label className="input input-lg validator w-full">
+                                            <svg
+                                                className="h-[1em] opacity-50"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            >
+                                                <circle cx="12" cy="12" r="10" />
+                                                <polyline points="12 6 12 12 16 14" />
+                                            </svg>
+                                            <input
+                                                name="time"
+                                                type="time"
+                                                required
+                                                className="w-full"
+                                                placeholder="Time *"
+                                                value={formData.time || ""}
+                                                onChange={handleInputChange}
+                                            />
+                                        </label>
+                                    </div>
+
+                                    {/* <input name="date" type="date" className="input input-lg w-full"
+                                        required
+                                        placeholder="Date *"
+                                        value={formData.date}
+                                        onChange={handleInputChange}
+                                    />
+                                    <input name="time" type="time" className="input input-lg w-full"
+                                        required
+                                        placeholder="Time *"
+                                        value={formData.time}
+                                        onChange={handleInputChange}
+                                    /> */}
                                 </div>
                             </fieldset>
-                            <div className="dropdown dropdown-bottom w-full">
-                                <div tabIndex={0} role="button" className="btn btn-lg w-full my-5">Select a service</div>
-                                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box w-full shadow-sm">
-                                    <li><a>Routine Cleaning</a></li>
-                                    <li><a>Consultation</a></li>
-                                    <li><a>Dental Filling</a></li>
-                                    <li><a>Teeth Whitening</a></li>
-                                    <li><a>Crown/Bridge</a></li>
-                                    <li><a>Dental Implant</a></li>
-                                    <li><a>Emergency Care</a></li>
-                                    <li><a>Other</a></li>
+                            <details className="dropdown w-full my-5">
+                                <summary className="btn btn-lg w-full flex justify-between items-center">
+                                    <span>{formData.service || "Select a service *"}</span>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="w-5 h-5 ml-2 transition-transform duration-200 group-open:rotate-180"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </summary>
+
+                                <ul className="menu bg-base-100 rounded-box w-full shadow-sm mt-2">
+                                    {services.map((service) => (
+                                        <li key={service}>
+                                            <a
+                                                onClick={(e) => {
+                                                    handleServiceSelect(service);
+                                                    e.target.closest("details").removeAttribute("open");
+                                                }}
+                                                className={`py-3 px-4 w-full transition-all ${formData.service === service
+                                                    ? "bg-neutral text-base-100"
+                                                    : ""
+                                                    }`}
+                                            >
+                                                {service}
+                                            </a>
+                                        </li>
+                                    ))}
                                 </ul>
-                            </div>
+                            </details>
                             <fieldset className="fieldset">
-                                <input type="text" className="input input-lg w-full" placeholder="Additional Message (Optional)" />
+                                <input name="message" type="text" className="input input-lg w-full" placeholder="Additional Message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                />
                             </fieldset>
                         </div>
-                        <button className="btn btn-xl btn-neutral mt-4 w-full">Book Appointment</button>
+                        <button type="submit" className="btn btn-xl btn-neutral mt-4 w-full">
+                            Book Appointment
+                        </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );

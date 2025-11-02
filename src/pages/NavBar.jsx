@@ -1,9 +1,15 @@
+import prudental_logo from "../assets/prudental-logo.svg"
 function NavBar() {
     return (
         <div className="navbar bg-base-100 shadow-sm px-10 lg:px-20 fixed top-0 w-full z-50">
-            <div className="navbar-start">
+            {/* <a href="#welcome" className="navbar-start">
                 <h1 className="text-2xl font-bold text-primary">Prudental</h1>
-            </div>
+                <img src={prudental_logo}/>
+            </a> */}
+            <a href="#welcome" className="navbar-start flex items-center gap-2">
+  <img src={prudental_logo} className="h-12 w-auto" alt="Logo" />
+</a>
+
             <div className="navbar-end">
                 <div className="hidden lg:flex items-center space-x-8">
                     <a href="#about" className="text-foreground hover:text-primary transition-colors">
@@ -31,7 +37,7 @@ function NavBar() {
                         className="menu dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li><a href="#about">About</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a className="menu-active" href="#patients">Our Patients</a></li>
+                        <li><a href="#patients">Our Patients</a></li>
                         <li><a href="#appointment">Book Appointment</a></li>
                     </ul>
                 </div>

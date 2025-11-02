@@ -2,3 +2,26 @@
 @plugin "daisyui" {
   themes: autumn --default;
 }
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+/* Change the text color inside date/time inputs */
+input[type="date"],
+input[type="time"] {
+  color: #828282; /* Tailwind gray-700 for example */
+}

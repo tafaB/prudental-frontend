@@ -2,8 +2,9 @@ import backgroundImage from "../assets/multiple-dentists.jpg"
 import foregroundImage from "../assets/dentist-portrait.jpg"
 function AboutSection() {
     return (
-        <div className="grid lg:grid-cols-2 gap-16 items-center  px-10 lg:px-20 py-20">
-            <div className="space-y-8">
+        // <div id="about" className="grid lg:grid-cols-2 gap-16 items-center  px-10 lg:px-20 py-20">
+        <div id="about" className="grid lg:grid-cols-2 gap-16 items-center px-5 lg:px-20 py-20">
+            <div className="space-y-8" data-aos="fade-right">
                 <div className="space-y-4">
                     <h2 className="text-4xl font-bold text-gray-900">
                         About Our Practice
@@ -55,14 +56,21 @@ function AboutSection() {
             </div>
 
             <div className="relative w-full h-[600px]">
-                <div className="absolute bottom-10 left-10 left-0 w-full h-full rounded-2xl overflow-hidden shadow-xl">
+                <div
+                    className="absolute bottom-10 left-5 right-5 h-full rounded-2xl overflow-hidden shadow-xl"
+                    data-aos="fade-left"
+                >
                     <img
                         src={backgroundImage}
                         className="w-full h-full object-cover"
                         alt="Background"
                     />
                 </div>
-                <div className="absolute bottom-0 w-1/2 rounded-2xl overflow-hidden shadow-2xl">
+
+                <div
+                    className="absolute bottom-0 left-0 w-1/2 rounded-2xl overflow-hidden shadow-2xl"
+                    data-aos="fade-right"
+                >
                     <img
                         src={foregroundImage}
                         className="w-full h-full object-cover"
@@ -70,6 +78,7 @@ function AboutSection() {
                     />
                 </div>
             </div>
+
         </div>
     );
 }
