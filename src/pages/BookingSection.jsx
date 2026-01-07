@@ -48,15 +48,15 @@ const ContactItem = ({ label, value, children }) => (
     </div>
 );
 
-const FormInput = ({ icon, ...props }) => (
+const FormInput = ({ icon, isTouched, ...props }) => (
     <div title={props.name}>
-        <label className="input input-lg validator w-full">
+        <label className={`input input-lg ${isTouched ? 'validator' : ''} w-full`}>
             <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 {icon}
             </svg>
             <input {...props} />
         </label>
-        {props.hint && <p className="validator-hint">{props.hint}</p>}
+        {props.hint && isTouched && <p className="validator-hint">{props.hint}</p>}
     </div>
 );
 
@@ -78,6 +78,7 @@ function BookingSection() {
     const [timeSlots, setTimeSlots] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [notification, setNotification] = useState(null);
+    const [touchedFields, setTouchedFields] = useState({});
     useEffect(() => {
         if (!notification) return;
         const timer = setTimeout(() => setNotification(null), 5000);
@@ -89,11 +90,14 @@ function BookingSection() {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+        if (!touchedFields[name]) {
+            setTouchedFields(prev => ({ ...prev, [name]: true }));
+        }
     };
 
     const handleDateSelect = async (e) => {
         const dateValue = e.target.value;
-        setFormData(prev => ({ ...prev, date: dateValue }));
+        setFormData(prev => ({ ...prev, date: dateValue, time: '' }));
         setCalendarOpen(false);
         setIsLoading(true);
 
@@ -118,6 +122,7 @@ function BookingSection() {
     const handleReset = () => {
         setFormData(INITIAL_FORM_STATE);
         setTimeSlots([]); 
+        setTouchedFields({});
     };
 
     const handleSubmit = async (e) => {
@@ -215,22 +220,22 @@ function BookingSection() {
                         
                         <fieldset className="grid lg:grid-cols-2 gap-5">
                             <FormInput 
-                                name="firstName" placeholder="First Name" required minLength="3" 
+                                name="firstName" placeholder="First Name" required minLength="3" isTouched={touchedFields.firstName}
                                 pattern="^[A-Za-z]{3,30}$" value={formData.firstName} onChange={handleInputChange}
                                 hint="3-30 letters only" icon={<><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></>}
                             />
                             <FormInput 
-                                name="lastName" placeholder="Last Name" required minLength="3"
+                                name="lastName" placeholder="Last Name" required minLength="3" isTouched={touchedFields.lastName}
                                 pattern="^[A-Za-z]{3,30}$" value={formData.lastName} onChange={handleInputChange}
                                 hint="3-30 letters only" icon={<><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></>}
                             />
                             <FormInput 
-                                name="email" type="email" placeholder="mail@site.com" required
+                                name="email" type="email" placeholder="mail@site.com" required isTouched={touchedFields.email}
                                 value={formData.email} onChange={handleInputChange}
                                 icon={<><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></>}
                             />
                             <FormInput 
-                                name="phone" type="tel" placeholder="Phone" required pattern="\+[0-9]*"
+                                name="phone" type="tel" placeholder="Phone" required pattern="\+[0-9]*" isTouched={touchedFields.phone}
                                 value={formData.phone} onChange={handleInputChange} hint="Must include prefix"
                                 icon={<path d="M11 1H5C3.89543 1 3 1.89543 3 3V13C3 14.1046 3.89543 15 5 15H11C12.1046 15 13 14.1046 13 13V3C13 1.89543 12.1046 1 11 1Z" stroke="currentColor" fill="none" />}
                             />

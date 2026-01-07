@@ -23,30 +23,30 @@ import share_card from "../assets/share-card.jpg"
 function ReviewSection() {
     const testimonials = [
         {
-            name: "Sarah Johnson",
-            role: "Marketing Manager",
-            content: "Dr. Smith and the team made my dental anxiety disappear. The modern facility and gentle care exceeded my expectations. I actually look forward to my appointments now!",
-            rating: 5,
-            image: "https://images.unsplash.com/photo-1675526607070-f5cbd71dde92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGRlbnRhbCUyMHBhdGllbnQlMjBzbWlsZXxlbnwxfHx8fDE3NTkzODY5Nzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-        },
-        {
-            name: "Michael Chen",
-            role: "Software Engineer",
-            content: "The digital technology they use is incredible. My crown was made and fitted in a single visit. The precision and efficiency are outstanding.",
-            rating: 5,
-            image: null
-        },
-        {
-            name: "Emily Rodriguez",
+            name: "Naime Pervizi",
             role: "Teacher",
-            content: "After years of hiding my smile, the cosmetic work done here has completely transformed my confidence. The results are natural and beautiful.",
+            content: "As a new patient, I was impressed from start to finish. The process was seamless, and everyone made me feel welcome. Could not ask for a better experience!",
             rating: 5,
             image: null
         },
         {
-            name: "David Thompson",
-            role: "Retired",
-            content: "The staff here treats you like family. They explained everything clearly and made sure I was comfortable throughout my treatment.",
+            name: "Bering Tafa",
+            role: "Software Engineer",
+            content: "Everyone is friendly, professional, and highly skilled. The office is spotless, appointments run on time, and the care is exceptional. My teeth have never felt better. Highly recommended!",
+            rating: 5,
+            image: null
+        },
+        {
+            name: "Grisilda Pasha",
+            role: "Architect",
+            content: "I got my braces here and I couldn't be happier with the results! Professional team and excellent care!!",
+            rating: 5,
+            image: null
+        },
+        {
+            name: "Olgert Brisku",
+            role: "Media Manager",
+            content: "Very professional 🌟",
             rating: 5,
             image: null
         }
