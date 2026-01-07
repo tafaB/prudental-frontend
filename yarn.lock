@@ -796,6 +796,11 @@ argparse@^2.0.1:
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
   integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
 
+atomico@^1.79.2:
+  version "1.79.2"
+  resolved "https://registry.yarnpkg.com/atomico/-/atomico-1.79.2.tgz#eebff0e65fe12fdf2d751f57ec66e8057e923ddc"
+  integrity sha512-mshhLRMeIltNYbnQnqgnrvJ/uDa8XDfTQcjw3ymOygQqwHIQ4Sp0LcNYMCbACkV3DtV+eDXb9szwU4qMUuGwYQ==
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -829,6 +834,13 @@ callsites@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
+
+cally@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/cally/-/cally-0.9.0.tgz#1eff9b36c034f57224a4e319395ffc9bc25abf06"
+  integrity sha512-pbhbit/wOU5wtZMWhNxteuqNmJ436t8P6Bj4HpCuk6si6JQqRs+9fu4UBTNXOC+0G4iyVIf5LUkf5UgRwm/TLg==
+  dependencies:
+    atomico "^1.79.2"
 
 caniuse-lite@^1.0.30001741:
   version "1.0.30001743"

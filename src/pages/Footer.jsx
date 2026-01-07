@@ -9,12 +9,12 @@ function Footer() {
         <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
             <aside>
                 <img src={prudental_logo}/>
-                <p className="py-5">
+                <div className="py-5">
                     <p className="text-xl font-bold">
                         Prudental
                     </p>
                     Providing exceptional dental care with a gentle touch.<br/>Your smile is our priority.
-                </p>
+                </div>
                 <div className="grid grid-flow-col gap-4">
                     <a href="https://www.instagram.com/prudental.clinic?igsh=NXpvbTAzNWdvbTRi">
                         <img className="w-8 h-8 text-white" src={instagram}/>

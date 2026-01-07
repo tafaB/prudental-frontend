@@ -16,7 +16,7 @@ function Welcome() {
                     </div>
                     <div className="flex flex-col lg:flex-row gap-4">
                         <a href="#appointment" className="btn btn-primary">Book Your Appointment</a>
-                        <a href="#about" class="btn btn-outline btn-primary">Learn More</a>
+                        <a href="#about" className="btn btn-outline btn-primary">Learn More</a>
                     </div>
                     {/* <div className="grid grid-cols-3 gap-8 py-8">
                         <div className="text-center">
